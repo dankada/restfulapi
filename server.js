@@ -58,9 +58,10 @@ app.put("/users/:id", (req, res) => {
     return res.status(404).json({ message: "User not found" });
   }
 
-  users[index] = {
-    id: id,
-    name: req.body.name,
+  users[index] = { 
+    ...users[index], 
+    ...req.body, 
+    id: id 
   };
 
   res.json(users[index]);
